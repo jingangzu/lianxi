@@ -42,3 +42,5 @@ Route::get('/env',function (){
 });
 
 Route::get('/newQuery/insert','DataBaseController@newQueryInsert');
+
+require __DIR__ . './route/trees.php';
