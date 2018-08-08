@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use Illuminate\Support\Facades\Input;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -44,3 +44,28 @@ Route::get('/env',function (){
 Route::get('/newQuery/insert','DataBaseController@newQueryInsert');
 
 require __DIR__ . './route/trees.php';
+
+Route::any('captcha-test', function()
+{
+    if (Request::getMfethod() == 'POST')
+    {
+        $rules = ['captcha' => 'required|captcha'];
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails())
+        {
+            echo '<p style="color: #ff0000;">Incorrect!</p>';
+        }
+        else
+        {
+            echo '<p style="color: #00ff30;">Matched :)</p>';
+        }
+    }
+
+    $form = '<form method="post" action="captcha-test">';
+    $form .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+    $form .= '<p>' . captcha_img('flat') . '</p>';
+    $form .= '<p><input type="text" name="captcha"></p>';
+    $form .= '<p><button type="submit" name="check">Check</button></p>';
+    $form .= '</form>';
+    return $form;
+});
