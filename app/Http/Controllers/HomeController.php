@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,7 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
     /**
      * 对static::class进行测试
      *
@@ -34,4 +36,5 @@ class HomeController extends Controller
     {
         return static::class;
     }
+
 }

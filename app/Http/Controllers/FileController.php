@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FileController extends Controller
 {
@@ -48,4 +50,9 @@ class FileController extends Controller
         return storage_path('app/5b432b65ab6e4.zip');
     }
 
+
+    public function export()
+    {
+        return Excel:: download(new UsersExport, ' users.xlsx ');
+    }
 }

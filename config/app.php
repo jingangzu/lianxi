@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'zh-CN',
 
     /*
     |--------------------------------------------------------------------------
@@ -143,11 +143,23 @@ return [
         Illuminate\Redis\RedisServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
-        Illuminate\Translation\TranslationServiceProvider::class,
+        //语言包替换
+//        Illuminate\Translation\TranslationServiceProvider::class,
+        Overtrue\LaravelLang\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        //树
         Baum\Providers\BaumServiceProvider::class,
+        //验证码
         Mews\Captcha\CaptchaServiceProvider::class,
+        //错误异常
+        GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
+        //日志阅读器
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        //手机验证码
+        Toplan\PhpSms\PhpSmsServiceProvider::class,
+        Toplan\Sms\SmsManagerServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,//表格文件
 
 //        Asvae\ApiTester\ServiceProvider::class,
 
@@ -213,6 +225,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        'PhpSms' => Toplan\PhpSms\Facades\Sms::class,
+        'SmsManager' => Toplan\Sms\Facades\SmsManager::class,
+//        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 
